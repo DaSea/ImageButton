@@ -1,0 +1,28 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icon/000.png</file>
+        <file>icon/00.png</file>
+        <file>icon/22.png</file>
+        <file>icon/33.png</file>
+        <file>icon/44.png</file>
+        <file>icon/55.png</file>
+        <file>icon/66.png</file>
+        <file>icon/77.png</file>
+        <file>icon/88.png</file>
+        <file>icon/99.png</file>
+        <file>icon/11.png</file>
+        <file>icon/222.png</file>
+        <file>icon/333.png</file>
+        <file>icon/444.png</file>
+        <file>icon/555.png</file>
+        <file>icon/666.png</file>
+        <file>icon/777.png</file>
+        <file>icon/888.png</file>
+        <file>icon/999.png</file>
+        <file>icon/111.png</file>
+        <file>icon/xx.png</file>
+        <file>icon/xxx.png</file>
+        <file>icon/weather_n.gif</file>
+        <file>icon/weather_p.gif</file>
+    </qresource>
+</RCC>
