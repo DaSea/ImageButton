@@ -2,10 +2,12 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include <QLabel>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 
-namespace Ui {
-class Widget;
-}
+#include "ImageButton.h"
+#include "imagebuttontext.h"
 
 class Widget : public QWidget
 {
@@ -16,7 +18,7 @@ public:
     ~Widget();
 
 private:
-    Ui::Widget *ui;
+    QHBoxLayout *h1Layout;
 };
 
 #endif // WIDGET_H

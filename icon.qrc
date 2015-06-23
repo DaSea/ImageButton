@@ -25,4 +25,22 @@
         <file>icon/weather_n.gif</file>
         <file>icon/weather_p.gif</file>
     </qresource>
+    <qresource prefix="/defaultBtn">
+        <file>defaultIcon/BigBlue.png</file>
+        <file>defaultIcon/BigGrayButton.png</file>
+        <file>defaultIcon/BigGreenButton.png</file>
+        <file>defaultIcon/BigOrangeButton.png</file>
+        <file>defaultIcon/BigPinkButton.png</file>
+        <file>defaultIcon/BigRedButton.png</file>
+        <file>defaultIcon/BigYellowButton.png</file>
+        <file>defaultIcon/circlebtn2.png</file>
+        <file>defaultIcon/circlebtn3.png</file>
+        <file>defaultIcon/SmallBlue.png</file>
+        <file>defaultIcon/SmallGrayButton.png</file>
+        <file>defaultIcon/SmallGreenButton.png</file>
+        <file>defaultIcon/SmallOrangeButton.png</file>
+        <file>defaultIcon/SmallPink.png</file>
+        <file>defaultIcon/SmallRedButton.png</file>
+        <file>defaultIcon/SmallYellowButton.png</file>
+    </qresource>
 </RCC>

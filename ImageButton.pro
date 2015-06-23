@@ -14,12 +14,14 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         widget.cpp \
-    ImageButton.cpp
+    ImageButton.cpp \
+    imagebuttontext.cpp
 
 HEADERS  += widget.h \
-    ImageButton.h
+    ImageButton.h \
+    imagebuttontext.h
 
-FORMS    += widget.ui
+FORMS    +=
 
 RESOURCES += \
     icon.qrc

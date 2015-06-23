@@ -9,7 +9,10 @@ class ImageButton : public QPushButton
     Q_OBJECT
 
 public:
-    explicit ImageButton(QString normalName, QString horverName, QString pressName,int icon_x=0,int icon_y=0,QWidget *parent = 0);
+    //构造函数，调用参数：按钮三态图片
+    explicit ImageButton(const QString &normalName, const QString& horverName, const QString& pressName,QWidget *parent = 0);
+    //构造函数，调用参数:直接调用，提供默认的三态图片
+    explicit ImageButton(QWidget *parent = 0);
 
 //按钮的事件处理函数
 protected:
@@ -24,7 +27,20 @@ protected:
     //鼠标样式绘制
     virtual void paintEvent(QPaintEvent *);
 
-private:
+public:
+    //获得按钮的大小
+    int BtnWidth();
+    int BtnHeight();
+    //应用按钮显示的文字
+    bool setBtnText(const QString&);
+
+protected:
+    //设置默认的按钮样式
+    void setDefault();
+    //设置按钮的大小
+    void setBtnSize();
+
+protected:
     //用于标识按钮的触发状态
     typedef enum
     {
@@ -36,22 +52,17 @@ private:
         ST_HOVER,
         //鼠标按下状态
         ST_PRESS,
-
+        //按钮所有状态的图片个数
         ST_COUNT
     } Status;
     Status curStatus_;
 
-    //存储按钮在这几个状态下的背景图片
+    //存储按钮在这几个状态下的背景图片路径
     QString imageName_[ST_COUNT];
 
     //存储按钮的大小
     int icon_width;
     int icon_height;
-
-    //存储按钮的位置
-    int icon_x;
-    int icon_y;
-
 };
 
 #endif // IMAGEBUTTON_H

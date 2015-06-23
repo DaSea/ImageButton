@@ -2,13 +2,14 @@
 #include <QtWidgets>
 #include <QPixmap>
 
-ImageButton::ImageButton(QString normalName, QString horverName, QString pressName,int icon_x,int icon_y,QWidget *parent)
+ImageButton::ImageButton(const QString& normalName, const QString& horverName, const QString& pressName,QWidget *parent)
     : QPushButton(parent)
     //设置按钮初始状态
     , curStatus_(ST_INIT)
 {
     //设置按钮状态为正常
     curStatus_ = ST_NORMAL;
+
     //存储按钮三态图片
     //正常图片
     imageName_[ST_NORMAL] = normalName;
@@ -17,15 +18,53 @@ ImageButton::ImageButton(QString normalName, QString horverName, QString pressNa
     //按下图片
     imageName_[ST_PRESS] = pressName;
 
-    //获得图片的大小以便用来调整按钮的大小
-    QPixmap icon;
-    icon.load(normalName);
-    this->icon_width=icon.width();
-    this->icon_height=icon.height();
-    this->setGeometry(icon_x,icon_y,icon_width,icon_height);
+   //设置按钮大小
+    setBtnSize();
 }
 
-//按钮进入事件
+ImageButton::ImageButton(QWidget *parent)
+    : QPushButton(parent)
+    //设置按钮初始状态
+    , curStatus_(ST_INIT)
+{
+    //设置按钮状态为正常
+    curStatus_ = ST_NORMAL;
+
+    //设置默认三态按钮及按钮大小
+    setDefault();
+
+}
+
+void ImageButton::setDefault()
+{
+    //默认按钮
+    imageName_[ST_NORMAL] = ":/defaultBtn/defaultIcon/BigBlue.png";
+    //悬停按钮
+    imageName_[ST_HOVER] = ":/defaultBtn/defaultIcon/BigYellowButton.png";
+    //按下按钮
+    imageName_[ST_PRESS] = ":/defaultBtn/defaultIcon/BigGreenButton.png" ;
+
+    //设置按钮大小
+    setBtnSize();
+}
+
+void ImageButton::setBtnSize()
+{
+    //获得图片的大小以便用来调整按钮的大小
+    QPixmap icon;
+    //读取正常状态按钮图片
+    icon.load(imageName_[ST_NORMAL]);
+
+    this->icon_width=icon.width();
+    this->icon_height=icon.height();;
+
+    //设置按钮控件的最小与最大大小
+    setMaximumSize(icon_width,icon_height);
+    setMinimumSize(icon_width,icon_height);
+
+    //qDebug()<<icon_width<<icon_height;
+}
+
 void ImageButton::enterEvent(QEvent *)
 {
     if (curStatus_ == ST_INIT)
@@ -33,11 +72,12 @@ void ImageButton::enterEvent(QEvent *)
         return;
     }
 
-    curStatus_ = ST_NORMAL;
+    //鼠标进入按钮时，设置状态为悬停
+    curStatus_ = ST_HOVER;
     update();
 }
 
-//按钮离开事件
+
 void ImageButton::leaveEvent(QEvent *)
 {
     if (curStatus_ == ST_INIT)
@@ -45,11 +85,12 @@ void ImageButton::leaveEvent(QEvent *)
         return;
     }
 
+    //鼠标离开按钮时，设置状态为正常
     curStatus_ = ST_NORMAL;
     update();
 }
 
-//按钮按下事件
+
 void ImageButton::mousePressEvent(QMouseEvent *event)
 {
     if (curStatus_ == ST_INIT)
@@ -63,12 +104,9 @@ void ImageButton::mousePressEvent(QMouseEvent *event)
         //将按钮状态设置为按下，并绘图
         curStatus_ = ST_PRESS;
         update();
-
     }
-
 }
 
-//按钮释放事件
 void ImageButton::mouseReleaseEvent(QMouseEvent *event)
 {
     //如果鼠标左键释放
@@ -88,7 +126,7 @@ void ImageButton::mouseReleaseEvent(QMouseEvent *event)
     }
 }
 
-//按钮样式绘图
+
 void ImageButton::paintEvent(QPaintEvent *event)
 {
     if (curStatus_ == ST_INIT)
@@ -96,8 +134,20 @@ void ImageButton::paintEvent(QPaintEvent *event)
         QPushButton::paintEvent(event);
         return;
     }
-
     QPainter painter(this);
+    //绘制当前状态的按钮
     QPixmap pixmap(imageName_[curStatus_]);
+    //绘图
     painter.drawPixmap(rect(), pixmap);
 }
+
+int ImageButton::BtnHeight()
+{
+    return icon_height;
+}
+
+int ImageButton::BtnWidth()
+{
+    return icon_width;
+}
+
