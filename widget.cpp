@@ -5,22 +5,18 @@ Widget::Widget(QWidget *parent) :
     QWidget(parent)
 {
     ImageButton *NumButton_0=new ImageButton();
-    ImageButton *NumButton_1=new ImageButton();
-    ImageButton *NumButton_2=new ImageButton();
-    ImageButton *NumButton_3=new ImageButton(":/icon/33.png",":/icon/33.png",":/icon/333.png");
-    ImageButtonText *NumBtn_4 = new ImageButtonText(":/icon/33.png",":/icon/33.png",":/icon/333.png");
-    //NumButton_3->setBtnText("123");
+    ImageButton *NumButton_3=new ImageButton(":/icon/33.png",":/icon/33.png",":/icon/333.png",this);
 
-    QPushButton *testBtn = new QPushButton;
-    testBtn->setText("Hello");
+    ImageButtonText *NumButton_4 = new ImageButtonText();
+    NumButton_4->setBtnText("按钮文本");
+    //NumButton_4->setBtnTextAlignment(Qt::AlignRight);
+    NumButton_4->setBtnTextLayout(ImageButtonText::TOP);
+
 
     h1Layout = new QHBoxLayout(this);
     h1Layout->addWidget(NumButton_0);
-    h1Layout->addWidget(NumButton_1);
-    h1Layout->addWidget(NumButton_2);
     h1Layout->addWidget(NumButton_3);
-    h1Layout->addWidget(testBtn);
-    h1Layout->addWidget(NumBtn_4);
+    h1Layout->addWidget(NumButton_4);
 
 }
 

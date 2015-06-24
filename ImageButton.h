@@ -1,3 +1,10 @@
+/*************************************************
+Copyright:江贤
+Author:江贤
+Version：0.5.0
+Init Date:2015-04-04
+Description:三态图片按钮
+**************************************************/
 #ifndef IMAGEBUTTON_H
 #define IMAGEBUTTON_H
 
@@ -14,6 +21,12 @@ public:
     //构造函数，调用参数:直接调用，提供默认的三态图片
     explicit ImageButton(QWidget *parent = 0);
 
+/**********可供调用的函数**********/
+public:
+    //获得按钮的大小
+    int getBtnWidth();
+    int getBtnHeight();
+
 //按钮的事件处理函数
 protected:
     //鼠标进入事件
@@ -26,13 +39,6 @@ protected:
     virtual void mouseReleaseEvent(QMouseEvent *event);
     //鼠标样式绘制
     virtual void paintEvent(QPaintEvent *);
-
-public:
-    //获得按钮的大小
-    int BtnWidth();
-    int BtnHeight();
-    //应用按钮显示的文字
-    bool setBtnText(const QString&);
 
 protected:
     //设置默认的按钮样式
@@ -61,8 +67,8 @@ protected:
     QString imageName_[ST_COUNT];
 
     //存储按钮的大小
-    int icon_width;
-    int icon_height;
+    int btn_width;
+    int btn_height;
 };
 
 #endif // IMAGEBUTTON_H

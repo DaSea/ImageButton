@@ -55,14 +55,14 @@ void ImageButton::setBtnSize()
     //读取正常状态按钮图片
     icon.load(imageName_[ST_NORMAL]);
 
-    this->icon_width=icon.width();
-    this->icon_height=icon.height();;
+    this->btn_width=icon.width();
+    this->btn_height=icon.height();;
 
     //设置按钮控件的最小与最大大小
-    setMaximumSize(icon_width,icon_height);
-    setMinimumSize(icon_width,icon_height);
+    setMaximumSize(btn_width,btn_height);
+    setMinimumSize(btn_width,btn_height);
 
-    //qDebug()<<icon_width<<icon_height;
+    //qDebug()<<btn_width<<btn_height;
 }
 
 void ImageButton::enterEvent(QEvent *)
@@ -77,7 +77,6 @@ void ImageButton::enterEvent(QEvent *)
     update();
 }
 
-
 void ImageButton::leaveEvent(QEvent *)
 {
     if (curStatus_ == ST_INIT)
@@ -89,7 +88,6 @@ void ImageButton::leaveEvent(QEvent *)
     curStatus_ = ST_NORMAL;
     update();
 }
-
 
 void ImageButton::mousePressEvent(QMouseEvent *event)
 {
@@ -126,7 +124,6 @@ void ImageButton::mouseReleaseEvent(QMouseEvent *event)
     }
 }
 
-
 void ImageButton::paintEvent(QPaintEvent *event)
 {
     if (curStatus_ == ST_INIT)
@@ -141,13 +138,12 @@ void ImageButton::paintEvent(QPaintEvent *event)
     painter.drawPixmap(rect(), pixmap);
 }
 
-int ImageButton::BtnHeight()
+int ImageButton::getBtnHeight()
 {
-    return icon_height;
+    return btn_height;
 }
 
-int ImageButton::BtnWidth()
+int ImageButton::getBtnWidth()
 {
-    return icon_width;
+    return btn_width;
 }
-
